@@ -206,4 +206,10 @@ A permissive open-source license is planned after publication.
 ## Author
 
 **Zahra Khazaei** — Graph machine learning for clinical survival analysis.
-Questions and collaboration inquiries are welcome via GitHub.
+Questions and collaboration inquiries are welcome.
+
+- 📧 Email: [zahra1997khazaei@gmail.com](mailto:zahra1997khazaei@gmail.com)
+- 💼 LinkedIn: [zahra-khazaei](https://www.linkedin.com/in/zahra-khazaei-b936771b9/)
+- 🔬 ORCID: [0009-0002-6850-9930](https://orcid.org/0009-0002-6850-9930)
+- 🎓 Google Scholar: [profile](https://scholar.google.com/citations?user=FfLT0fUAAAAJ&hl=en)
+- 📄 ResearchGate: [Zahra-Khazaei](https://www.researchgate.net/profile/Zahra-Khazaei-9)
