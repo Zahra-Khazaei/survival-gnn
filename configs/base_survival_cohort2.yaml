@@ -1,0 +1,6 @@
+extends: base_survival.yaml
+
+DATA_FOLDER: "Data/Cohort2"
+max_time: 216          # full follow-up range
+horizons_months: [60, 120]        # 5y, 10y — 180m dropped: 0 negatives in multiple folds
+ibs_max_time: 120

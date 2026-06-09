@@ -1,0 +1,99 @@
+# =========================
+# Base config — shared by all survival experiments
+# Do NOT run this file directly. Use a leaf config that extends it.
+# Leaf files only need: extends, LABEL_COL, TIME_COL, Graph_method, Graph_feature
+# =========================
+
+TASK_TYPE: "survival"
+
+data_path: auto        # resolves to Data/Cohort?/<LABEL_COL>_scaled_data.csv
+split_path: auto       # resolves to Data/Cohort?/<LABEL_COL>_data_splits.json
+
+seed: 42
+
+# =========================
+# Model
+# Options: "GCN" | "GIN" | "GraphSAGE" | "GraphTransformer" | "Graphormer"
+# =========================
+model_name: "GCN"
+
+# Uncomment and adjust for the chosen model:
+extra_args:
+  # GIN
+  # train_eps: true
+  # GraphSAGE
+  # aggr: "max"    # "mean" | "max" | "add" | "lstm"
+  # GraphTransformer
+  # num_heads: 4
+  # Graphormer — max_degree is set automatically from the train backbone
+  # max_dist: 10
+
+grad_clip_norm: 1.0
+
+# =========================
+# Survival setup
+# =========================
+k: 10                          # KNN neighbors for graph construction
+bin_width: 6                   # months per time-bin
+max_time: 216                  # cap for discretization (months)
+horizons_months: [60, 120]     # evaluation horizons: 5y and 10y
+ibs_max_time: 60               # limit IBS integration range for stability
+
+# =========================
+# Optuna / Training
+# =========================
+n_trials: 50
+num_epochs: 100
+
+# =========================
+# Graph construction
+# Options — Graph_method:  "cosine" | "euclidean" | "mahalanobis" | "correlation"
+#            Graph_feature: "PSA" | "GLEASON_GLOBAL" | "all_feature"
+# =========================
+Graph_method: "cosine"
+Graph_feature: "GLEASON_GLOBAL"
+
+# =========================
+# Interpretation
+# Options: "misclassified" | "highest" | "closest05" | "median" | "all"
+# =========================
+interpret:
+  strategy: "all"
+
+# =========================
+# MC-Dropout (used by survival_interpret_example.py)
+# =========================
+bayesian:
+  mc_dropout:
+    enabled: true
+    mc_passes: 50
+
+# =========================
+# Deep Ensemble (used by survival_train_ensemble.py)
+# =========================
+ensemble:
+  enabled: true
+  seeds: [11, 19, 23, 31, 37, 41, 44, 48, 52, 57, 61, 67, 71, 79, 83]
+
+# =========================
+# Early Stopping
+# =========================
+early_stopping:
+  enabled: true
+  patience: 20
+  min_delta: 1e-4
+  warmup_epochs: 10
+  eval_every: 1
+
+patience: 20    # mirrors early_stopping.patience — read directly by survival_train_ensemble.py
+
+# =========================
+# Features
+# =========================
+features:
+  - AGE
+  - PSA
+  - GLEASON_GLOBAL
+  - GLEASON_PRIMARY
+  - GLEASON_SECONDARY
+  # - CLINICAL_STAGE

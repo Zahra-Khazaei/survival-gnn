@@ -1,0 +1,5 @@
+extends: base_survival_cohort2.yaml
+LABEL_COL: "METASTASIS"
+TIME_COL:  "METASTASIS_TIME"
+Graph_method: "cosine"
+Graph_feature: "all_feature"

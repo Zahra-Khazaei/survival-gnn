@@ -1,0 +1,26 @@
+extends: base_survival.yaml
+
+DATA_FOLDER: "Data/Cohort1r"
+max_time: 132
+horizons_months: [60]
+ibs_max_time: 60
+
+features:
+  - AGE
+  - PSA
+  - GLEASON_GLOBAL
+  - GLEASON_PRIMARY
+  - GLEASON_SECONDARY
+  # - CLINICAL_STAGE
+  - RADIOMIC_PN_1
+  - RADIOMIC_PN_2
+  - RADIOMIC_PN_3
+  - RADIOMIC_PN_4
+  - RADIOMIC_PN_5
+  - RADIOMIC_PN_6
+  - RADIOMIC_BCR_1
+  - RADIOMIC_BCR_2
+  - RADIOMIC_BCR_3
+  - RADIOMIC_BCR_4
+  - RADIOMIC_BCR_5
+  - RADIOMIC_BCR_6

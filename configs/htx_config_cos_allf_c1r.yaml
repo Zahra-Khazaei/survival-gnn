@@ -1,0 +1,5 @@
+extends: base_survival_cohort1r.yaml
+LABEL_COL: "HTX"
+TIME_COL:  "HTX_TIME"
+Graph_method: "cosine"
+Graph_feature: "all_feature"

@@ -1,0 +1,5 @@
+extends: base_survival_cohort1r.yaml
+LABEL_COL: "BCR"
+TIME_COL:  "BCR_TIME"
+Graph_method: "cosine"
+Graph_feature: "PSA"

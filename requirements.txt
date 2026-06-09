@@ -1,0 +1,27 @@
+# Core deep learning
+torch>=2.0
+torch-geometric>=2.4
+
+# Scientific stack
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.3
+
+# Survival analysis
+lifelines>=0.27          # Cox proportional hazards baseline
+scikit-survival>=0.22    # Random Survival Forest baseline + survival metrics
+
+# Hyperparameter optimization
+optuna>=3.4
+
+# Plotting & misc
+matplotlib>=3.7
+joblib>=1.3
+PyYAML>=6.0
+tqdm>=4.65
+
+# Notes
+# - torch-geometric also requires torch-scatter / torch-sparse on some setups;
+#   follow the official PyG install guide for your CUDA/CPU build:
+#   https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html

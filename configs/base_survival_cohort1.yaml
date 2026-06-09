@@ -1,0 +1,6 @@
+extends: base_survival.yaml
+
+DATA_FOLDER: "Data/Cohort1"
+max_time: 132          # slightly above max follow-up of 124.3 months
+horizons_months: [60]        # 5y only — 108m/120m dropped: test folds (~29 pts) have 0-2 negatives beyond 90m
+ibs_max_time: 60

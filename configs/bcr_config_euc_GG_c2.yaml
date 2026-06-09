@@ -1,0 +1,5 @@
+extends: base_survival_cohort2.yaml
+LABEL_COL: "BCR"
+TIME_COL:  "BCR_TIME"
+Graph_method: "euclidean"
+Graph_feature: "GLEASON_GLOBAL"

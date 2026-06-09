@@ -1,0 +1,5 @@
+extends: base_survival_cohort2.yaml
+LABEL_COL: "HTX"
+TIME_COL:  "HTX_TIME"
+Graph_method: "euclidean"
+Graph_feature: "PSA"

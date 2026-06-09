@@ -1,0 +1,5 @@
+extends: base_survival_cohort1.yaml
+LABEL_COL: "CRPC"
+TIME_COL:  "CRPC_TIME"
+Graph_method: "cosine"
+Graph_feature: "GLEASON_GLOBAL"

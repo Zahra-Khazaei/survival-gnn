@@ -1,0 +1,34 @@
+# Clinical data — never commit
+Data/
+*.csv
+
+# Experiment outputs
+Optuna_results*/
+Baseline_results*/
+Baseline_Results*/
+results/
+slurm_logs/
+*.log
+
+# Model checkpoints
+*.pth
+*.pt
+
+# Result figures / artifacts (illustrative README assets in assets/ are kept)
+/*.png
+/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

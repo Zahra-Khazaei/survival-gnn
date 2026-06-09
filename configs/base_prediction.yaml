@@ -1,0 +1,116 @@
+# =========================
+# Base config — shared by all classification experiments
+# Do NOT run this file directly. Use a leaf config that extends it.
+# Leaf files only need: extends, LABEL_COL, Graph_method, Graph_feature
+# =========================
+
+TASK_TYPE: "classification"
+
+DATA_FOLDER: "Data/Cohort2"
+data_path: auto        # resolves to Data/Cohort?/<LABEL_COL>_scaled_data.csv
+split_path: auto       # resolves to Data/Cohort?/<LABEL_COL>_data_splits.json
+
+seed: 42
+
+# =========================
+# Model
+# Options: "GCN" | "GIN" | "GraphSAGE" | "GraphTransformer" | "global_transformer" | "Graphormer"
+# =========================
+model_name: "GCN"
+
+# Uncomment and adjust for the chosen model:
+# extra_args:
+#   # GIN
+#   # train_eps: true
+#   # GraphSAGE
+#   # aggr: "lstm"    # "mean" | "max" | "add" | "lstm"
+#   # GraphTransformer / global_transformer
+#   # num_heads: 4
+#   # max_dist: 10
+#   # Graphormer — max_degree is set automatically from the train backbone
+
+grad_clip_norm: 1.0
+
+# =========================
+# Optuna / Training
+# =========================
+n_trials: 50
+num_epochs: 100
+
+# =========================
+# Graph construction
+# Options — Graph_method:  "cosine" | "euclidean" | "mahalanobis" | "correlation"
+#            Graph_feature: "PSA" | "GLEASON_GLOBAL" | "all_feature"
+# =========================
+Graph_method: "cosine"
+Graph_feature: "GLEASON_GLOBAL"
+
+# =========================
+# Loss
+# =========================
+use_focal_loss: false    # true = FocalLoss | false = weighted CE
+
+# =========================
+# Interpretation
+# Options: "misclassified" | "highest" | "closest05" | "median" | "all"
+# =========================
+interpret:
+  strategy: "all"
+
+# =========================
+# MC-Dropout (used by test.py and interpret flows)
+# =========================
+bayesian:
+  mc_dropout:
+    enabled: true
+    mc_passes: 50
+
+# =========================
+# Deep Ensemble (used by train_ensemble.py)
+# threshold_strategy options: "recall" | "f1"
+# =========================
+ensemble:
+  enabled: true
+  seeds: [11, 19, 23, 31, 37, 41, 44, 48, 52, 57, 61, 67, 71, 79, 83]
+  threshold_strategy: "recall"
+  target_recall: 0.67    # only used when threshold_strategy == "recall"
+
+# =========================
+# Temperature Calibration (used by test.py and train_ensemble.py)
+# =========================
+calibration:
+  temperature:
+    enabled: true
+
+# =========================
+# Early Stopping
+# =========================
+early_stopping:
+  enabled: true
+  patience: 20
+  min_delta: 1e-4
+  warmup_epochs: 10
+  eval_every: 1
+
+# =========================
+# Features
+# =========================
+features:
+  - AGE
+  - PSA
+  - GLEASON_GLOBAL
+  - GLEASON_PRIMARY
+  - GLEASON_SECONDARY
+  # - CLINICAL_STAGE
+  # - RADIOMIC_PN_1
+  # - RADIOMIC_PN_2
+  # - RADIOMIC_PN_3
+  # - RADIOMIC_PN_4
+  # - RADIOMIC_PN_5
+  # - RADIOMIC_PN_6
+  # - RADIOMIC_BCR_1
+  # - RADIOMIC_BCR_2
+  # - RADIOMIC_BCR_3
+  # - RADIOMIC_BCR_4
+  # - RADIOMIC_BCR_5
+  # - RADIOMIC_BCR_6

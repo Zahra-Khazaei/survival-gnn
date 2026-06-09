@@ -1,0 +1,5 @@
+extends: base_survival_cohort12.yaml
+LABEL_COL: "DEATH"
+TIME_COL:  "DEATH_TIME"
+Graph_method: "cosine"
+Graph_feature: "all_feature"
